@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
+import org.bezkup.application.Status;
 import org.bezkup.application.TrainInfo;
 import org.bezkup.ns.RouteStation;
 import org.bezkup.ns.TrainDeparture;
@@ -86,7 +87,7 @@ public class TrainInfoService {
                         getFormattedDate(trainDeparture),
                         (int) trainDeparture.plannedDateTime().until(trainDeparture.actualDateTime(), ChronoUnit.MINUTES),
                         trainDeparture.cancelled(),
-                        trainDeparture.departureStatus()
+                        Status.valueOf(trainDeparture.departureStatus()).name()
                 ))
                 .collect(Collectors.toList());
     }
