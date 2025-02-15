@@ -36,3 +36,4 @@ build/
 
 src/main/frontend/*
 frontend/*
+src/main/bundles
