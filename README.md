@@ -10,7 +10,7 @@ This project is a Train Information Application for NS (Nederlandse Spoorwegen) 
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-repo/train-info-app.git
+    git clone https://github.com/Bezkup/trainNL.git
     cd train-info-app
     ```
 
