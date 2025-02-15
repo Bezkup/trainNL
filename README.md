@@ -1,7 +1,7 @@
-## Train Information Application
+## Train NL 
 
 ## Overview
-This project is a Train Information Application built using Java, Spring Boot, and Vaadin. It displays a list of trains with their status, direction, planned departure time, and track information.
+This project is a Train Information Application for NS (Nederlandse Spoorwegen) built using Java, Spring Boot, and Vaadin. It displays a list of trains with their status, direction, planned departure time, and track information.
 
 ## Prerequisites
 - JDK 17 or higher
