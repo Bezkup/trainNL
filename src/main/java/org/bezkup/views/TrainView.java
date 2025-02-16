@@ -31,10 +31,7 @@ import java.time.temporal.ChronoUnit;
 @Uses(Icon.class)
 public class TrainView extends Composite<VerticalLayout> {
 
-    private final TrainInfoService trainInfoService;
-
     public TrainView(TrainInfoService trainInfoService) {
-        this.trainInfoService = trainInfoService;
         H1 header = new H1("Train list");
         getContent().setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
         getContent().add(header);
@@ -62,9 +59,11 @@ public class TrainView extends Composite<VerticalLayout> {
     private Renderer<TrainInfo> createDirectionRenderer() {
         return new ComponentRenderer<>(trainInfo -> {
             var direction = new Span(trainInfo.direction());
-            var routeStations = new Span(" via " + trainInfo.routeStations());
-
-            var lines = new VerticalLayout(direction, routeStations);
+            var lines = new VerticalLayout(direction);
+            if (!trainInfo.routeStations().isBlank()) {
+                var routeStations = new Span(" via " + trainInfo.routeStations());
+                lines.add(routeStations);
+            }
             lines.setAlignItems(FlexComponent.Alignment.START);
             lines.setPadding(false);
             lines.setSpacing(false);

@@ -70,7 +70,7 @@ public class TrainInfoService {
                 JsonNode departuresNode = rootNode.path("payload").path("departures");
                 List<TrainDeparture> trainDepartures = objectMapper.readValue(departuresNode.toString(), new TypeReference<>() {
                 });
-                return trainDeparturToTrainInfo(trainDepartures);
+                return trainDepartureToTrainInfo(trainDepartures);
             } catch (JsonProcessingException e) {
                 logger.error("Error while processing response", e);
                 return new ArrayList<>();
@@ -78,7 +78,7 @@ public class TrainInfoService {
         }
     }
 
-    private List<TrainInfo> trainDeparturToTrainInfo(List<TrainDeparture> trainDepartures) {
+    private List<TrainInfo> trainDepartureToTrainInfo(List<TrainDeparture> trainDepartures) {
         return trainDepartures.stream()
                 .map(trainDeparture -> new TrainInfo(
                         trainDeparture.direction(),
@@ -111,10 +111,10 @@ public class TrainInfoService {
         var hour = plannedDateTime.getHour() + "";
         var minutes = plannedDateTime.getMinute() + "";
         if (plannedDateTime.getHour() < 10) {
-            hour = "0" + plannedDateTime.getHour();
+            hour = "0" + hour;
         }
         if (plannedDateTime.getMinute() < 10) {
-            minutes = "0" + plannedDateTime.getMinute();
+            minutes = "0" + minutes;
         }
 
         return hour + ":" + minutes;
