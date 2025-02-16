@@ -7,7 +7,9 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.Renderer;
@@ -36,13 +38,24 @@ public class TrainView extends Composite<VerticalLayout> {
         grid.addColumn(createStatusRenderer()).setHeader("STATUS");
         grid.addColumn(createDirectionRenderer()).setHeader("DIRECTION");
         grid.addColumn(createPlannedDateTimeRenderer()).setHeader("DATE TIME");
-        grid.addColumn(createActualTrack()).setHeader("TRACK");
+        grid.addColumn(createActualTrackRender()).setHeader("TRACK");
         getContent().add(grid);
     }
 
-    private ComponentRenderer<Span, TrainInfo> createActualTrack() {
-        return new ComponentRenderer<>(Span::new,
-                (span, trainInfo) -> { span.setText(trainInfo.track());});
+    private ComponentRenderer<HorizontalLayout, TrainInfo> createActualTrackRender() {
+        return new ComponentRenderer<>(HorizontalLayout::new,
+                (layout, trainInfo) -> {
+                    if (trainInfo.track() != null) {
+                        var span = new Span();
+                        span.setText(trainInfo.track());
+                        layout.add(span);
+                    } else {
+                        var icon = VaadinIcon.BUS.create();
+                        layout.add(icon);
+                    }
+                    layout.setPadding(false);
+                    layout.setPadding(false);
+                });
     }
 
     private ComponentRenderer<Span, TrainInfo> createStatusRenderer() {
