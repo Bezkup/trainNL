@@ -8,8 +8,6 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.Renderer;
@@ -19,10 +17,6 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.bezkup.application.TrainInfo;
 import org.bezkup.service.TrainInfoService;
-import org.bezkup.ns.TrainDeparture;
-
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 @SpringComponent
 @UIScope
